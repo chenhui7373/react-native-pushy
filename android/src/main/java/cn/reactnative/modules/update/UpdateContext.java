@@ -47,6 +47,10 @@ public class UpdateContext {
         return rootDir.toString();
     }
 
+    public String getPackageName() {
+        return context.getPackageName();
+    }
+
     public String getPackageVersion() {
         PackageManager pm = context.getPackageManager();
         PackageInfo pi = null;

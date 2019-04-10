@@ -146,6 +146,7 @@ RCT_EXPORT_MODULE(RCTHotUpdate);
     NSMutableDictionary *ret = [NSMutableDictionary new];
     ret[@"downloadRootDir"] = [RCTHotUpdate downloadDir];
     ret[@"packageVersion"] = [RCTHotUpdate packageVersion];
+    ret[@"packageName"] = [RCTHotUpdate packageName];
     ret[@"isRolledBack"] = [defaults objectForKey:keyRolledBackMarked];
     ret[@"isFirstTime"] = [defaults objectForKey:keyFirstLoadMarked];
     NSDictionary *updateInfo = [defaults dictionaryForKey:keyUpdateInfo];
@@ -444,6 +445,12 @@ RCT_EXPORT_METHOD(markSuccess)
 {
     NSURL *url = [[NSBundle mainBundle] URLForResource:@"main" withExtension:@"jsbundle"];
     return url;
+}
+
+
++ (NSString *)packageName
+{
+    return [[NSBundle mainBundle] bundleIdentifier];
 }
 
 + (NSString *)packageVersion
